@@ -31,14 +31,11 @@ public class UserController {
         return "login";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@ModelAttribute User user, Model model, HttpSession session){
-        User currentUser = userRepository.readUser(user);
+    @PostMapping("/login")
+    public String login(@ModelAttribute User user, HttpSession session){
+        User currentUser = userRepository.findUser(user);
         if (currentUser != null){
 
-            PasswordService pwdService = new PasswordService();
-
-            if (pwdService.checkMatch(user.getPassword(), currentUser.getPassword())){
                 session.setAttribute("status", "1");
                 System.out.println("Logget på");
             } else {
@@ -46,8 +43,18 @@ public class UserController {
                 System.out.println("Ikke logget på");
                 return "login";
             }
+        return "redirect:/calenderView";
+    }
+    @GetMapping("/calenderView")
+    public String calenderView(HttpSession session){
+
+
+
+        if (sessionCheck(session)){
+            return "calenderView";
+        } else {
+            return "login";
         }
-        return "redirect:/index";
     }
 
     private boolean sessionCheck(HttpSession session){
