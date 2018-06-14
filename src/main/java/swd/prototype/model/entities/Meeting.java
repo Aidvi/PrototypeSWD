@@ -11,6 +11,14 @@ public class Meeting {
     private Date dateTime;
     private int customerFK;
 
+    public Meeting(String title, String subject, String details, Date dateTime, int customerFK) {
+        this.title = title;
+        this.subject = subject;
+        this.details = details;
+        this.dateTime = dateTime;
+        this.customerFK = customerFK;
+    }
+
     public Meeting(){
 
     }

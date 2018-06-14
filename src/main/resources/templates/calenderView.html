@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: head">
-    <link rel="stylesheet" type="text/css" href="C:\Users\Nisse\Desktop\Java Programs\prototype\src\main\resources\static\main.css" />
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="" th:href="@{style.css}"/>
     <title>Calender</title>
 </head>
 <body>
-
-<h1>Calender Birkelund Revision</h1>
+<div th:replace="fragments/menubar::menubar"/>
 
 </body>
 </html>

@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Login Page</title>
-    <link rel="stylesheet"
-          href="C:\Users\Stryker\Desktop\1.års.erhversprojekt\src\main\resources\static\style.css"
-          th:href="@{style.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="" th:href="@{style.css}"/>
+    <title>Login page</title>
 </head>
 <body>
-<h1>Login</h1>
+<div th:replace="fragments/menubar::menubar"/>
 
-<h2 style="color: #fff;">Log på</h2>
 <form method="POST" action="/login">
     <input type="text" name="username" value="admin"/>
     <input type="password" name="password" value="admin"/>
-    <input type="submit"  value="login"/>
+    <input type="submit"  value="login" class="btn-primary"/>
 </form>
 
 </body>
