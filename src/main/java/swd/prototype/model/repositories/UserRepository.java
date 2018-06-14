@@ -28,7 +28,7 @@ public class UserRepository {
 
         User user = null;
         try {
-            user = (User) template.queryForObject(sql, parameters, new userRowMapper());
+            user = (User)template.queryForObject(sql, parameters, new userRowMapper());
         } catch (DataAccessException e) {
             System.out.println("Username and Password wrong");
         }
