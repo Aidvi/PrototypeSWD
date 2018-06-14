@@ -50,17 +50,6 @@ public class UserController {
             }
         return "redirect:/calenderView";
     }
-    @GetMapping("/calenderView")
-    public String calenderView(HttpSession session){
-
-        meetingRepository.createMeeting(new Meeting("", "", "", null, 1));
-
-        if (sessionCheck(session)){
-            return "calenderView";
-        } else {
-            return "login";
-        }
-    }
 
     private boolean sessionCheck(HttpSession session){
         if(session.getAttribute("status") != null && session.getAttribute("status").equals("1")){

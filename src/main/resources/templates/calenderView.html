@@ -2,11 +2,64 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="" th:href="@{style.css}"/>
+    <link rel="stylesheet" href="" th:href="@{calenderStyle.css}"/>
+    <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <title>Calender</title>
 </head>
-<body>
-<div th:replace="fragments/menubar::menubar"/>
 
+
+<body>
+<div class="container-fluid">
+    <div th:replace="fragments/menubar :: menubar"/>
+
+    <div id='calendar'></div>
+
+    <!--This is the JQuery, Moment and fullcalender dependencies for the calendar plugin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // page is now ready, initialize the calendar...
+            function get_calendar_height() {
+                return $(window).height() - 30;
+            }
+
+            $(window).resize(function () {
+                $('#calendar').fullCalendar('option', 'height', get_calendar_height());
+            });
+
+            $('#calendar').fullCalendar({
+                // put your options and callbacks here
+                defaultView: 'agendaWeek',
+                firstDay: '1',
+                displayEventTime: true,
+                themeSystem: 'bootstrap4',
+                timezone: 'local',
+                height: get_calendar_height,
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay,listMonth'
+                },
+                Editable: true, // can be dragged
+                disableResizing: true, // can't change size
+                editable: true,
+                weekNumbers: true,
+                eventLimit: true, // allow "more" link when too many events
+                timeFormat: 'H(:mm)',
+                navLinks: true,
+
+                views: {
+                    agendaWeek: {
+                        eventLimit: 2 // adjust to 6 only for agendaWeek/agendaDay
+                    }
+                },
+            });
+        });
+    </script>
+</div>
 </body>
 </html>
