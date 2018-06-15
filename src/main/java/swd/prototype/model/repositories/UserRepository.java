@@ -2,12 +2,10 @@ package swd.prototype.model.repositories;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 import swd.prototype.model.entities.User;
-import swd.prototype.model.rowmappers.userRowMapper;
+import swd.prototype.model.rowmappers.UserRowMapper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +26,7 @@ public class UserRepository {
 
         User user = null;
         try {
-            user = (User)template.queryForObject(sql, parameters, new userRowMapper());
+            user = (User)template.queryForObject(sql, parameters, new UserRowMapper());
         } catch (DataAccessException e) {
             System.out.println("Username and Password wrong");
         }

@@ -1,5 +1,7 @@
 package swd.prototype.model.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Meeting {
@@ -8,7 +10,9 @@ public class Meeting {
     private String title;
     private String subject;
     private String details;
+    @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")
     private Date startDate;
+    @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")
     private Date endDate;
     private int customerFK;
 
@@ -19,6 +23,9 @@ public class Meeting {
         this.startDate = startDate;
         this.endDate = endDate;
         this.customerFK = customerFK;
+    }
+    public Meeting(){
+
     }
 
     public int getMeetingId() {

@@ -23,9 +23,7 @@ public class MeetingRepository {
         namedParameters.put("startDate", meeting.getStartDate());
         namedParameters.put("endDate", meeting.getEndDate());
         namedParameters.put("customerFK", meeting.getCustomerFK());
-        System.out.println("test");
-        System.out.println(template);
-        System.out.println("test");
+
 
         template.update(SQL, namedParameters);
 
