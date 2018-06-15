@@ -6,7 +6,7 @@ import swd.prototype.model.entities.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class userRowMapper implements RowMapper {
+public class UserRowMapper implements RowMapper {
 
     public User mapRow(ResultSet rs, int numRow) throws SQLException {
         User user = new User();
