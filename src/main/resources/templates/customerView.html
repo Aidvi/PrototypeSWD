@@ -168,46 +168,46 @@
     <div class="con-1" >
 
         <div class="con-2" >
-            <form class="form-style-7">
+            <form class="form-style-7" th:action="@{/create}" th:object="${customer}" method="post">
                 <ul>
                     <li>
                         <label for="name">Firma navn</label>
-                        <input type="text" name="name" maxlength="100"/>
+                        <input type="text" th:field="*{company}" name="name" maxlength="100"/>
                         <span>Enter your full name here</span>
                     </li>
                     <li>
                         <label for="email">CVR nr.</label>
-                        <input type="text" name="email" maxlength="100"/>
+                        <input type="text" name="email" th:field="*{cvr}" maxlength="100"/>
                         <span>Enter a valid email address</span>
                     </li>
                     <li>
                         <label for="url">Adresse</label>
-                        <input type="text" name="url" maxlength="100"/>
+                        <input type="text" name="url" th:field="*{streetadress}" maxlength="100"/>
                         <span>Your website address (eg: http://www.google.com)</span>
                     </li>
                     <li>
                         <label for="bio">Post nr.</label>
-                        <input type="text" name="bio" onkeyup="adjust_textarea(this)"/>
+                        <input type="text" name="bio" th:field="*{postelCode}" onkeyup="adjust_textarea(this)"/>
                         <span>Say something about yourself</span>
                     </li>
                     <li>
                         <label for="bio">Kontakt fornavn</label>
-                        <input type="text" name="bio" onkeyup="adjust_textarea(this)"/>
+                        <input type="text" name="bio" th:field="*{contact_name}" onkeyup="adjust_textarea(this)"/>
                         <span>Say something about yourself</span>
                     </li>
                     <li>
                         <label for="bio">Kontakt efternavn</label>
-                        <input type="text" name="bio" onkeyup="adjust_textarea(this)"/>
+                        <input type="text" name="bio" th:field="*{contact_lastname}" onkeyup="adjust_textarea(this)"/>
                         <span>Say something about yourself</span>
                     </li>
                     <li>
                         <label for="bio">Email</label>
-                        <input type="text" name="bio" onkeyup="adjust_textarea(this)"/>
+                        <input type="text" name="bio" th:field="*{contact_email}" onkeyup="adjust_textarea(this)"/>
                         <span>Say something about yourself</span>
                     </li>
                     <li>
                         <label for="bio">Telefon nr.</label>
-                        <input type="text" name="bio" onkeyup="adjust_textarea(this)"/>
+                        <input type="text" name="bio" th:field="*{contact_phone}" onkeyup="adjust_textarea(this)"/>
                         <span>Say something about yourself</span>
                     </li>
                     <li>

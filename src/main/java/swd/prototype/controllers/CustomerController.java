@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import swd.prototype.model.entities.Customer;
 import swd.prototype.model.repositories.CustomerRepository;
@@ -20,16 +21,17 @@ public class CustomerController {
     public String getCustomerView(Model model){
 
         model.addAttribute("customerList", cRepo.readAll());
+        model.addAttribute("customer", new Customer());
 
         return "customerView";
     }
 
     @PostMapping("/create")
-    public String createCustomer(Customer c) throws SQLException{
-
+    public String createCustomer(@ModelAttribute("customer") Customer c) throws SQLException{
+        System.out.println(c);
         cRepo.create(c);
 
-        return "redirect:/customer";
+        return "redirect:/readAll";
     }
 
     @GetMapping("/read")
