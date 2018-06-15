@@ -4,11 +4,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="" th:href="@{calenderStyle.css}"/>
     <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <title>Calender</title>
 </head>
-
-
 <body>
 <div class="container-fluid">
     <div th:replace="fragments/menubar :: menubar"/>
@@ -26,11 +23,9 @@
             function get_calendar_height() {
                 return $(window).height() - 30;
             }
-
             $(window).resize(function () {
                 $('#calendar').fullCalendar('option', 'height', get_calendar_height());
             });
-
             $('#calendar').fullCalendar({
                 // put your options and callbacks here
                 defaultView: 'agendaWeek',
@@ -51,7 +46,6 @@
                 eventLimit: true, // allow "more" link when too many events
                 timeFormat: 'H(:mm)',
                 navLinks: true,
-
                 views: {
                     agendaWeek: {
                         eventLimit: 2 // adjust to 6 only for agendaWeek/agendaDay

@@ -8,19 +8,17 @@ public class Meeting {
     private String title;
     private String subject;
     private String details;
-    private Date dateTime;
+    private Date startDate;
+    private Date endDate;
     private int customerFK;
 
-    public Meeting(String title, String subject, String details, Date dateTime, int customerFK) {
+    public Meeting(String title, String subject, String details, Date startDate, Date endDate, int customerFK) {
         this.title = title;
         this.subject = subject;
         this.details = details;
-        this.dateTime = dateTime;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.customerFK = customerFK;
-    }
-
-    public Meeting(){
-
     }
 
     public int getMeetingId() {
@@ -55,12 +53,20 @@ public class Meeting {
         this.details = details;
     }
 
-    public Date getDateTime() {
-        return dateTime;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public int getCustomerFK() {
