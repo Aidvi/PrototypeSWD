@@ -3,26 +3,25 @@
 <head>
     <title>Title</title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css"/>
+
     <style>
-
-
         .con-1{
 
         }
 
         .con-2{
-
             display: inline-block;
             width: 55%
         }
 
         .con-3{
-
             display: inline-block;
             width: 40%;
             top: 0;
             position: absolute;
-            margin-top: 80px;
+            margin-top: 160px;
         }
 
         .con-4{
@@ -32,12 +31,9 @@
             text-align: left;
             border-radius: 5px;
             padding: 5px;
-
-
-
         }
 
-        a {
+        .con-5 {
             text-decoration: none;
             color: black;
         }
@@ -157,9 +153,6 @@
             color:#fff;
         }
 
-
-
-
     </style>
 
 </head>
@@ -174,45 +167,45 @@
                     <li>
                         <label for="name">Firma navn</label>
                         <input type="text" th:field="*{company}" name="name" maxlength="100"/>
-                        <span>Enter your full name here</span>
+                        <span></span>
                     </li>
                     <li>
                         <label for="email">CVR nr.</label>
                         <input type="text" name="email" th:field="*{cvr}" maxlength="100"/>
-                        <span>Enter a valid email address</span>
+                        <span></span>
                     </li>
                     <li>
                         <label for="url">Adresse</label>
                         <input type="text" name="url" th:field="*{streetadress}" maxlength="100"/>
-                        <span>Your website address (eg: http://www.google.com)</span>
+                        <span></span>
                     </li>
                     <li>
                         <label for="bio">Post nr.</label>
                         <input type="text" name="bio" th:field="*{postelCode}" onkeyup="adjust_textarea(this)"/>
-                        <span>Say something about yourself</span>
+                        <span> </span>
                     </li>
                     <li>
                         <label for="bio">Kontakt fornavn</label>
                         <input type="text" name="bio" th:field="*{contact_name}" onkeyup="adjust_textarea(this)"/>
-                        <span>Say something about yourself</span>
+                        <span></span>
                     </li>
                     <li>
                         <label for="bio">Kontakt efternavn</label>
                         <input type="text" name="bio" th:field="*{contact_lastname}" onkeyup="adjust_textarea(this)"/>
-                        <span>Say something about yourself</span>
+                        <span></span>
                     </li>
                     <li>
                         <label for="bio">Email</label>
                         <input type="text" name="bio" th:field="*{contact_email}" onkeyup="adjust_textarea(this)"/>
-                        <span>Say something about yourself</span>
+                        <span></span>
                     </li>
                     <li>
                         <label for="bio">Telefon nr.</label>
                         <input type="text" name="bio" th:field="*{contact_phone}" onkeyup="adjust_textarea(this)"/>
-                        <span>Say something about yourself</span>
+                        <span></span>
                     </li>
                     <li>
-                        <input type="submit" value="Send This" />
+                        <input type="submit" value="Gem" align="left"/>
                     </li>
                 </ul>
             </form>
@@ -220,7 +213,7 @@
 
         <div class="con-3" align="right">
             <div class="con-4" th:each="customer : ${customerList}" align="left">
-                <a href="https://www.google.com/">
+                <a class="con-5" href="https://www.google.com/">
                     <td class="title" th:text="${customer.company}"/>
                     <p th:text="${customer.cvr}"/>
 

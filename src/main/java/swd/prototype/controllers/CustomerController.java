@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import swd.prototype.model.entities.Customer;
 import swd.prototype.model.repositories.CustomerRepository;
+import javax.servlet.http.HttpSession;
 
 import java.sql.SQLException;
 
@@ -18,12 +19,17 @@ public class CustomerController {
     CustomerRepository cRepo = new CustomerRepository();
 
     @GetMapping("/readAll")
-    public String getCustomerView(Model model){
+    public String getCustomerView(Model model, HttpSession session){
 
         model.addAttribute("customerList", cRepo.readAll());
         model.addAttribute("customer", new Customer());
 
-        return "customerView";
+
+        if (sessionCheck(session)){
+            return "customerView";
+        } else {
+            return "login";
+        }
     }
 
     @PostMapping("/create")
@@ -38,6 +44,14 @@ public class CustomerController {
     public String getCustomer(){
 
         return "redirect:/readAll";
+    }
+
+    private boolean sessionCheck(HttpSession session){
+        if(session.getAttribute("status") != null && session.getAttribute("status").equals("1")){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
