@@ -7,6 +7,7 @@ import swd.prototype.model.entities.Meeting;
 import swd.prototype.model.rowmappers.CustomerRowMapper;
 import swd.prototype.model.rowmappers.MeetingRowMapper;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,8 +24,8 @@ public class MeetingRepository {
         namedParameters.put("title", meeting.getTitle());
         namedParameters.put("subject", meeting.getSubject());
         namedParameters.put("details", meeting.getDetails());
-        namedParameters.put("startDate", meeting.getStart());
-        namedParameters.put("endDate", meeting.getEnd());
+        namedParameters.put("startDate", new Timestamp(meeting.getStart().getTime()));
+        namedParameters.put("endDate", new Timestamp(meeting.getEnd().getTime()));
 
 
 
