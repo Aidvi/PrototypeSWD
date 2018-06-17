@@ -10,21 +10,22 @@ public class Meeting {
     private String title;
     private String subject;
     private String details;
-    @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")
-    private Date startDate;
-    @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")
-    private Date endDate;
-    private int customerFK;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private Date start;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private Date end;
 
-    public Meeting(String title, String subject, String details, Date startDate, Date endDate, int customerFK) {
+
+    public Meeting(int meetingId, String title, String subject, String details, Date start, Date end) {
+        this.meetingId = meetingId;
         this.title = title;
         this.subject = subject;
         this.details = details;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.customerFK = customerFK;
+        this.start = start;
+        this.end = end;
     }
-    public Meeting(){
+
+    public Meeting() {
 
     }
 
@@ -60,27 +61,32 @@ public class Meeting {
         this.details = details;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public Date getStart() {
+        return start;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setStart(Date start) {
+        this.start = start;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Date getEnd() {
+        return end;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setEnd(Date end) {
+        this.end = end;
     }
 
-    public int getCustomerFK() {
-        return customerFK;
-    }
-
-    public void setCustomerFK(int customerFK) {
-        this.customerFK = customerFK;
+    @Override
+    public String toString() {
+        return "Meeting{" +
+                "meetingId=" + meetingId +
+                ", title='" + title + '\'' +
+                ", subject='" + subject + '\'' +
+                ", details='" + details + '\'' +
+                ", start=" + start +
+                ", end=" + end +
+                '}';
     }
 }
+

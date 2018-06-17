@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import swd.prototype.model.entities.Meeting;
+import swd.prototype.model.rowmappers.CustomerRowMapper;
+import swd.prototype.model.rowmappers.MeetingRowMapper;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -20,12 +23,22 @@ public class MeetingRepository {
         namedParameters.put("title", meeting.getTitle());
         namedParameters.put("subject", meeting.getSubject());
         namedParameters.put("details", meeting.getDetails());
-        namedParameters.put("startDate", meeting.getStartDate());
-        namedParameters.put("endDate", meeting.getEndDate());
-        namedParameters.put("customerFK", meeting.getCustomerFK());
+        namedParameters.put("startDate", meeting.getStart());
+        namedParameters.put("endDate", meeting.getEnd());
+
 
 
         template.update(SQL, namedParameters);
 
+    }
+
+
+    public List readAll(){
+
+        String sql = "SELECT * FROM meeting";
+
+        List meetings = (List) template.query(sql, new MeetingRowMapper( ));
+
+        return meetings;
     }
 }

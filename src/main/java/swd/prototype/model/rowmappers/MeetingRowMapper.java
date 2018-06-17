@@ -14,10 +14,9 @@ public class MeetingRowMapper implements RowMapper{
         meeting.setMeetingId(rs.getInt("meeting_id"));
         meeting.setTitle(rs.getString("title"));
         meeting.setSubject(rs.getString("subject"));
-        meeting.setTitle(rs.getString("details"));
-        meeting.setStartDate(rs.getDate("startDate"));
-        meeting.setEndDate(rs.getDate("endDate"));
-        meeting.setCustomerFK(rs.getInt("customerFK"));
+        meeting.setDetails(rs.getString("details"));
+        meeting.setStart(rs.getTimestamp("start"));
+        meeting.setEnd(rs.getTimestamp("end"));
 
         return meeting;
     }
