@@ -14,6 +14,7 @@ public class Meeting {
     private Date start;
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date end;
+    private int customerFK;
 
 
     public Meeting(int meetingId, String title, String subject, String details, Date start, Date end) {
@@ -76,6 +77,13 @@ public class Meeting {
     public void setEnd(Date end) {
         this.end = end;
     }
+    public int getCustomerFK() {
+        return customerFK;
+    }
+
+    public void setCustomerFK(int customerFK) {
+        this.customerFK = customerFK;
+    }
 
     @Override
     public String toString() {
@@ -86,6 +94,7 @@ public class Meeting {
                 ", details='" + details + '\'' +
                 ", start=" + start +
                 ", end=" + end +
+                ", customerFK=" + customerFK +
                 '}';
     }
 }

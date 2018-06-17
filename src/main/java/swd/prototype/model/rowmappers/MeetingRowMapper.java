@@ -17,6 +17,7 @@ public class MeetingRowMapper implements RowMapper{
         meeting.setDetails(rs.getString("details"));
         meeting.setStart(rs.getTimestamp("start"));
         meeting.setEnd(rs.getTimestamp("end"));
+        meeting.setCustomerFK(rs.getInt("customerFK"));
 
         return meeting;
     }

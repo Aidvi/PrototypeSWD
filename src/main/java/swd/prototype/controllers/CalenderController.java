@@ -11,8 +11,6 @@ public class CalenderController {
     @GetMapping("/calenderView")
     public String calenderView(HttpSession session){
 
-
-
         if (sessionCheck(session)){
             return "calenderView";
         } else {

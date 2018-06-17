@@ -3,36 +3,59 @@ package swd.prototype.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import swd.prototype.model.entities.Meeting;
+import swd.prototype.model.repositories.CustomerRepository;
 import swd.prototype.model.repositories.MeetingRepository;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
-@RestController
-@RequestMapping("/meetings")
+
+
+@Controller
 public class MeetingController {
 
     @Autowired
     MeetingRepository mRepo = new MeetingRepository();
 
-    @GetMapping(value = "/all")
-    public String getMeetings() {
-        String jsonMsg = null;
-        try {
-            List<Meeting> meetings = mRepo.readAll();
-            ObjectMapper mapper = new ObjectMapper();
-            jsonMsg = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(meetings);
+    @Autowired
+    CustomerRepository cRepo = new CustomerRepository();
 
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+
+    @GetMapping("/createMeeting")
+    public String createMeeting(Model model, HttpSession session){
+        model.addAttribute("meeting", new Meeting());
+        model.addAttribute("customers", cRepo.readAll());
+
+        if (sessionCheck(session)){
+            return "createMeeting";
+        } else {
+            return "login";
         }
-        System.out.println("hejsa");
-        System.out.println(jsonMsg);
-        return jsonMsg;
     }
 
+    @PostMapping("/createMeeting")
+    public String createMeeting(@ModelAttribute Meeting meeting, HttpSession session){
+
+        System.out.println(meeting.toString());
+
+        mRepo.createMeeting(meeting);
+
+        if (sessionCheck(session)){
+            return "createMeeting";
+        } else {
+            return "login";
+        }
+    }
+
+    private boolean sessionCheck(HttpSession session){
+        if(session.getAttribute("status") != null && session.getAttribute("status").equals("1")){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
