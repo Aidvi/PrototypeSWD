@@ -193,7 +193,7 @@
                     <select name="customer_id">
                         <option th:each="customer : ${customers}"
                                 th:value="${customer.customer_id}"
-                                th:text="${customer_name}"/>
+                                th:text="${customer.contact_name} + ' ' + ${customer.contact_lastname}"/>
                     </select>
                 </li>
                 <li>
