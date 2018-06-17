@@ -38,7 +38,9 @@ public class MeetingController {
     }
 
     @PostMapping("/createMeeting")
-    public String createMeeting(@ModelAttribute Meeting meeting, HttpSession session){
+    public String createMeeting(@RequestParam("customer_id") int customer_id, @ModelAttribute Meeting meeting, HttpSession session){
+
+        meeting.setCustomerFK(customer_id);
 
         System.out.println(meeting.toString());
 

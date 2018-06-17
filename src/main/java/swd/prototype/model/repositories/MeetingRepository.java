@@ -19,13 +19,13 @@ public class MeetingRepository {
     private NamedParameterJdbcTemplate template;
 
     public void createMeeting(Meeting meeting){
-        String SQL = "INSERT INTO meeting (title, subject, details, startDate, endDate, customerFK) VALUES (:title, :subject, :details, :startDate, endDate, :customerFK)";
+        String SQL = "INSERT INTO meeting (title, subject, details, start, end, customerFK) VALUES (:title, :subject, :details, :start, :end, :customerFK)";
         Map namedParameters = new HashMap();
         namedParameters.put("title", meeting.getTitle());
         namedParameters.put("subject", meeting.getSubject());
         namedParameters.put("details", meeting.getDetails());
-        namedParameters.put("startDate", new Timestamp(meeting.getStart().getTime()));
-        namedParameters.put("endDate", new Timestamp(meeting.getEnd().getTime()));
+        namedParameters.put("start", new Timestamp(meeting.getStart().getTime()));
+        namedParameters.put("end", new Timestamp(meeting.getEnd().getTime()));
         namedParameters.put("customerFK", meeting.getCustomerFK());
 
         template.update(SQL, namedParameters);
